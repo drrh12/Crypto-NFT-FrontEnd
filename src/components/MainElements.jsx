@@ -6,4 +6,16 @@ export const MainComponent = styled.div`
   background-color: #1e2258;
 `;
 
-export const Menu = styled.div``;
+export const Menu = styled.div`
+  display: flex;
+  width: 80%;
+  margin: auto;
+  height: 10vh;
+  color: #fff;
+  border: 1px solid white;
+  align-items: center;
+
+  h3:last-child {
+    margin-left: 1rem;
+  }
+`;

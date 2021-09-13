@@ -6,7 +6,10 @@ function Main() {
   return (
     <>
       <MainComponent>
-        <Menu></Menu>
+        <Menu>
+          <h3>Crypto</h3>
+          <h3>Market Place</h3>
+        </Menu>
       </MainComponent>
     </>
   );
