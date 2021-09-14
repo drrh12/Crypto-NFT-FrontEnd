@@ -7,9 +7,10 @@ import {
   CoinData,
   CoinPrice,
   CoinVolume,
+  CoinMarketCap,
 } from "./CoinElements";
 
-function Coin({ name, image, symbol, price, marketCap }) {
+function Coin({ name, image, symbol, price, marketCap, priceChange, volume }) {
   return (
     <>
       <CoinContainer>
@@ -22,7 +23,17 @@ function Coin({ name, image, symbol, price, marketCap }) {
         </CoinRow>
         <CoinData>
           <CoinPrice>${price}</CoinPrice>
-          <CoinVolume>${marketCap.toLocaleString()}</CoinVolume>
+          <CoinVolume>market cap: ${marketCap.toLocaleString()}</CoinVolume>
+
+          {priceChange < 0 ? (
+            <p className="coin-percent red">{priceChange.toFixed(2)}%</p>
+          ) : (
+            <p className="coin-percent green">{priceChange.toFixed(2)}%</p>
+          )}
+
+          <CoinMarketCap>
+            trading volume: ${volume.toLocaleString()}
+          </CoinMarketCap>
         </CoinData>
       </CoinContainer>
     </>
