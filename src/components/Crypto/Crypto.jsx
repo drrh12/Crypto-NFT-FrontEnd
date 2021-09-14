@@ -1,9 +1,10 @@
 import React from "react";
+import Chart from "../Chart/Chart";
 
 function Crypto() {
   return (
     <div>
-      <h1>Crypto</h1>
+      <Chart></Chart>
     </div>
   );
 }
