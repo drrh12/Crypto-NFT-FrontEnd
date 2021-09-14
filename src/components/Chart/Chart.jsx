@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Search } from "./ChartElements";
+import { Search, SearchTitle, SearchForm, SearchInput } from "./ChartElements";
 
 import axios from "axios";
 import Coin from "../Coin/Coin";
@@ -11,7 +11,7 @@ function Chart() {
   useEffect(() => {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"
       )
       .then((res) => {
         setCoins(res.data);
@@ -30,10 +30,16 @@ function Chart() {
   return (
     <>
       <Search>
-        <h1>Search a crypto currency</h1>
-        <form action="">
-          <input type="text" placeholder="Search" onChange={handleChange} />
-        </form>
+        <SearchForm>
+          <SearchTitle>Search a crypto currency</SearchTitle>
+          <SearchForm action="">
+            <SearchInput
+              type="text"
+              placeholder="Search"
+              onChange={handleChange}
+            ></SearchInput>
+          </SearchForm>
+        </SearchForm>
         {filteredCoins.map((coin) => {
           return (
             <Coin
@@ -44,7 +50,6 @@ function Chart() {
               marketCap={coin.market_cap}
               price={coin.current_price}
               priceChange={coin.price_change_percentage_24h}
-              volume={coin.total_volume}
             />
           );
         })}
