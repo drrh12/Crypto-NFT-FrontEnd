@@ -9,7 +9,7 @@ import {
   CoinVolume,
 } from "./CoinElements";
 
-function Coin({ name, image, symbol, price, volume }) {
+function Coin({ name, image, symbol, price, marketCap }) {
   return (
     <>
       <CoinContainer>
@@ -22,7 +22,7 @@ function Coin({ name, image, symbol, price, volume }) {
         </CoinRow>
         <CoinData>
           <CoinPrice>${price}</CoinPrice>
-          <CoinVolume>${volume.toLocaleString()}</CoinVolume>
+          <CoinVolume>${marketCap.toLocaleString()}</CoinVolume>
         </CoinData>
       </CoinContainer>
     </>
