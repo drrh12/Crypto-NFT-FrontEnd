@@ -12,4 +12,31 @@ contract NFTMarket is ReentrancyGuard {
     Counters.Counter private _itemSold;
 
     address payable owner;
+    uint256 listingPrice = 0.025 ether;
+
+    constructor(){
+        owner = payable(msg.sender);
+    }
+
+    struct MarketItem{
+        uint itemId;
+        address nftContract;
+        uint256 tokenId;
+        address payable seller;
+        address payable owner;
+        uint256 price;
+        bool sold; 
+    }
+
+    mapping(uint256 => MarketItem) private idToMarketItem;
+
+    event MarketItemCreated (
+        uint indexed itemId,
+        address indexed nftContract,
+        uint256 indexed tokenId,
+        address seller,
+        address owner,
+        uint256 price,
+        bool sold
+    )
 }
