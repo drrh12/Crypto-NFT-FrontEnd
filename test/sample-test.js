@@ -16,7 +16,7 @@ describe("NFTMarket", function () {
     let listingPrice = await market.getListingPrice();
     listingPrice = listingPrice.toString();
 
-    const auctionPrice = ethers.utils.parseUnits("100", "ether");
+    const auctionPrice = ethers.utils.parseUnits("1", "ether");
 
     await nft.createToken("https://www.mytokenlocation.com");
     await nft.createToken("https://www.mytokenlocation2.com");
@@ -34,23 +34,20 @@ describe("NFTMarket", function () {
       .connect(buyerAddress)
       .createMarketSale(nftContractAddress, 1, { value: auctionPrice });
 
-    const items = await market.fetchMarketItems();
-
+    let items = await market.fetchMarketItems();
+    items = await Promise.all(
+      items.map(async (i) => {
+        const tokenUri = await nft.tokenURI(i.tokenId);
+        let item = {
+          price: i.price.toString(),
+          tokenId: i.price.toString(),
+          seller: i.seller,
+          owner: i.owner,
+          tokenUri,
+        };
+        return item;
+      })
+    );
     console.log("items: ", items);
-
-    //   items = await Promise.all(
-    //     items.map(async (i) => {
-    //       const tokenUri = await nft.tokenURI(i.tokenId);
-    //       let item = {
-    //         price: i.price.toString(),
-    //         tokenId: i.price.toString(),
-    //         seller: i.seller,
-    //         owner: i.owner,
-    //         tokenUri,
-    //       };
-    //       return item;
-    //     })
-    //   );
-    //   console.log("items: ", items);
   });
 });
