@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.4;
+pragma solidity >= 0.5.0 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 contract NFTMarket is ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
-    Counters.Counter private _itemSold;
+    Counters.Counter private _itemsSold;
 
     address payable owner;
     uint256 listingPrice = 0.025 ether;
@@ -65,5 +65,42 @@ contract NFTMarket is ReentrancyGuard {
         );
 
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
+    }
+
+    function createMartketSale(address nftContract, uint256 itemId)
+        public
+        payable
+        nonReentrant
+    {
+        uint256 price = idToMarketItem[itemId].price;
+        uint256 tokenId = idToMarketItem[itemId].tokenId;
+        require(
+            msg.value == price,
+            "Please submit the asking price in order to complete the purchase"
+        );
+
+        idToMarketItem[itemId].seller.transfer(msg.value);
+        IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+        idToMarketItem[itemId].owner = payable(msg.sender);
+        idToMarketItem[itemId].sold = true;
+        _itemsSold.increment();
+        payable(owner).transfer(listingPrice);
+    }
+
+    function fetchMarketItems() public view returns (MarketItem[] memory){
+        uint itemCount = _itemIds.current();
+        uint unsoldItemCount = _itemIds.current() - _itemsSold.current();
+        uint currentIndex = 0;
+
+        MarketItem[] memory items = new MarketItem[] (unsoldItemCount);
+        for(uint i = 0; i < itemCount; i++){
+            if(idToMarketItem[i + 1].owner == address(0)){
+               uint currentId = idToMarketItem[i + 1].itemId; 
+               MarketItem storage currentItem = idToMarketItem[currentId];
+               items[currentIndex] = currentItem;
+               currentIndex += 1;
+            }
+        }
+        return items;
     }
 }
