@@ -6,7 +6,7 @@ import React, {
   useRouteMatch,
 } from "react";
 import { ethers } from "ethers";
-import { create as ipfsHttpClient } from "ipfs-http-client";
+import { create, create as ipfsHttpClient } from "ipfs-http-client";
 import Web3Modal from "web3modal";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -84,7 +84,29 @@ function CreateItem() {
     router.push("/");
   }
 
-  return <div></div>;
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          placeholder="Asset name"
+          onChange={(e) =>
+            updateFormInput({ ...formInput, name: e.target.value })
+          }
+        />
+        <textarea placeholder="Asset Description" id="" cols="30" rows="10" />
+        <input
+          placeholder="Asset price in ETH"
+          onChange={(e) =>
+            updateFormInput({ ...formInput, price: e.target.value })
+          }
+        />
+        <input type="file" name="Asset" onChange={onChange} />
+        {fileUrl && <img alt="file" src={fileUrl} />}
+        <button onClick={createItem}>CreateDigital asset</button>
+      </div>
+    </div>
+  );
 }
 
 export default CreateItem;
