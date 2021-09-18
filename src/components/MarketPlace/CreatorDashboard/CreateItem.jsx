@@ -1,15 +1,8 @@
-import React, {
-  useState,
-  useParams,
-  useLocation,
-  useHistory,
-  useRouteMatch,
-} from "react";
-
+import React, { useState } from "react";
 import { ethers } from "ethers";
 import { create as ipfsHttpClient } from "ipfs-http-client";
+import { useHistory } from "react-router-dom";
 import Web3Modal from "web3modal";
-
 import { nftaddress, nftmarketaddress } from "../config";
 
 import NFT from "./artifacts/contracts/NFT.sol/NFT.json";
@@ -25,7 +18,9 @@ function CreateItem() {
     description: "",
   });
 
-  //   const router = useRouter();
+  let history = useHistory();
+
+  //   const router = useRouter(); THIS NEED TO BE FIXED, TO RE ROUTER
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -43,15 +38,18 @@ function CreateItem() {
   async function createItem() {
     const { name, description, price } = formInput;
     if (!name || !description || !price || !fileUrl) return;
+
     /* first, upload to IPFS */
     const data = JSON.stringify({
       name,
       description,
       image: fileUrl,
     });
+
     try {
       const added = await client.add(data);
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       createSale(url);
     } catch (error) {
@@ -84,7 +82,8 @@ function CreateItem() {
       value: listingPrice,
     });
     await transaction.wait();
-    // router.push("/");
+    // history.push("/assets");
+    // router.push("/"); AFTER CREATING THE NFT, SHOULD ROUTE TO THE ASSETS PAGE
   }
 
   return (
@@ -105,6 +104,7 @@ function CreateItem() {
           }
         />
         <input type="file" name="Asset" onChange={onChange} />
+
         {fileUrl && <img alt="file" src={fileUrl} />}
         <button onClick={createItem}>CreateDigital asset</button>
       </div>

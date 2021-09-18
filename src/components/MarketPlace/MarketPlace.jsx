@@ -10,11 +10,11 @@ function MarketPlace() {
     <Router>
       <MainContainer>
         <Menu>
-          <Link exact to="/assets">
-            <h4>Sell digital assets</h4>
-          </Link>
           <Link exact to="/my-assets">
             <h4>My assets</h4>
+          </Link>
+          <Link exact to="/assets">
+            <h4>Sell digital assets</h4>
           </Link>
           <Link exact to="/creator-dashboard">
             <h4>Creator dashboard</h4>
