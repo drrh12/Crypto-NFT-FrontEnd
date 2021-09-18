@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 import { create as ipfsHttpClient } from "ipfs-http-client";
-// import { useRouter } from "next/router";
 import Web3Modal from "web3modal";
 
+import { useHistory } from "react-router-dom";
 import { nftaddress, nftmarketaddress } from "../config";
 
 import NFT from "./artifacts/contracts/NFT.sol/NFT.json";
@@ -18,7 +18,8 @@ export default function CreateItem() {
     name: "",
     description: "",
   });
-  // const router = useRouter();
+
+  let history = useHistory();
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -76,7 +77,7 @@ export default function CreateItem() {
       value: listingPrice,
     });
     await transaction.wait();
-    // router.push("/");
+    history.push("/assets");
   }
 
   return (
