@@ -1,7 +1,7 @@
 import React from "react";
 
 function CreatorDashboard() {
-  return <div></div>;
+  return <div>dashboard</div>;
 }
 
 export default CreatorDashboard;

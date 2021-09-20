@@ -5,6 +5,7 @@ import { Menu, MainContainer } from "./MarketPlaceElements";
 import HomeNFT from "../MarketPlace/HomeNFT/HomeNFT";
 import CreateItem from "../MarketPlace/CreatorDashboard/CreateItem";
 import MyAssets from "./MyAssets/MyAssets";
+import CreatorDashboard from "./CreatorDashboard/CreatorDashboard";
 
 function MarketPlace() {
   return (
@@ -17,14 +18,18 @@ function MarketPlace() {
           <Link to="/assets">
             <h4>Sell digital assets</h4>
           </Link>
+          <Link to="/creator-item">
+            <h4>Create Item</h4>
+          </Link>
           <Link to="/creator-dashboard">
-            <h4>Creator dashboard</h4>
+            <h4>Creator Dashboard</h4>
           </Link>
         </Menu>
         <Switch>
           <Route path="/assets" component={HomeNFT} />
           <Route path="/my-assets" component={MyAssets} />
-          <Route path="/creator-dashboard" component={CreateItem} />
+          <Route path="/creator-item" component={CreateItem} />
+          <Route path="/creator-dashboard" component={CreatorDashboard} />
         </Switch>
       </MainContainer>
     </Router>
