@@ -1,8 +1,36 @@
 import React from "react";
-import { Menu, MainComponent } from "./MainElements";
+import { Menu, MainComponent, HyperLink } from "./MainElements";
 import MarketPlace from "./MarketPlace/MarketPlace";
 import Crypto from "./Crypto/Crypto";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import styled from "styled-components";
+
+// const Menu = styled(Link)`
+//   display: flex;
+//   width: 80%;
+//   margin: auto;
+//   height: 10vh;
+//   color: #fff;
+//   border: 1px solid white;
+//   align-items: center;
+
+//   $(Link) {
+//     text-decoration: none;
+
+//     &:focus,
+//     &:hover,
+//     &:visited,
+//     &:link,
+//     &:active {
+//       text-decoration: none;
+//     }
+//   }
+// `;
 
 function Main() {
   return (
@@ -10,12 +38,12 @@ function Main() {
       <Router>
         <MainComponent>
           <Menu>
-            <Link to="/crypto">
-              <h3>Crypto</h3>
-            </Link>
-            <Link to="/marketplace">
-              <h3>Market Place</h3>
-            </Link>
+            <NavLink className="nav-link" to="/crypto">
+              Crypto
+            </NavLink>
+            <NavLink className="nav-link" to="/marketplace">
+              Market Place
+            </NavLink>
           </Menu>
           <Switch>
             <Route path="/crypto" component={Crypto} />
