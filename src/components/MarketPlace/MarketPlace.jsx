@@ -1,6 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Menu, MainContainer } from "./MarketPlaceElements";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import { LinkComponent, Menu, MainContainer } from "./MarketPlaceElements";
 
 import HomeNFT from "../MarketPlace/HomeNFT/HomeNFT";
 import CreateItem from "../MarketPlace/CreatorDashboard/CreateItem";
@@ -12,18 +17,26 @@ function MarketPlace() {
     <Router>
       <MainContainer>
         <Menu>
-          <Link to="/my-assets">
-            <h4>My assets</h4>
-          </Link>
-          <Link to="/assets">
-            <h4>Sell digital assets</h4>
-          </Link>
-          <Link to="/creator-item">
-            <h4>Create Item</h4>
-          </Link>
-          <Link to="/creator-dashboard">
-            <h4>Creator Dashboard</h4>
-          </Link>
+          <LinkComponent>
+            <NavLink className="nav-link" to="/my-assets">
+              <h4>My assets</h4>
+            </NavLink>
+          </LinkComponent>
+          <LinkComponent>
+            <NavLink className="nav-link" to="/assets">
+              <h4>Sell digital assets</h4>
+            </NavLink>
+          </LinkComponent>
+          <LinkComponent>
+            <NavLink className="nav-link" to="/creator-item">
+              <h4>Create Item</h4>
+            </NavLink>
+          </LinkComponent>
+          <LinkComponent>
+            <NavLink className="nav-link" to="/creator-dashboard">
+              <h4>Creator Dashboard</h4>
+            </NavLink>
+          </LinkComponent>
         </Menu>
         <Switch>
           <Route path="/assets" component={HomeNFT} />

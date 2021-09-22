@@ -8,29 +8,6 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import styled from "styled-components";
-
-// const Menu = styled(Link)`
-//   display: flex;
-//   width: 80%;
-//   margin: auto;
-//   height: 10vh;
-//   color: #fff;
-//   border: 1px solid white;
-//   align-items: center;
-
-//   $(Link) {
-//     text-decoration: none;
-
-//     &:focus,
-//     &:hover,
-//     &:visited,
-//     &:link,
-//     &:active {
-//       text-decoration: none;
-//     }
-//   }
-// `;
 
 function Main() {
   return (
@@ -39,10 +16,10 @@ function Main() {
         <MainComponent>
           <Menu>
             <NavLink className="nav-link" to="/crypto">
-              Crypto
+              <h4>Crypto</h4>
             </NavLink>
             <NavLink className="nav-link" to="/marketplace">
-              Market Place
+              <h4>Market Place</h4>
             </NavLink>
           </Menu>
           <Switch>
