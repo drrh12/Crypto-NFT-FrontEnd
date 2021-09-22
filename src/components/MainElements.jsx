@@ -12,7 +12,6 @@ export const Menu = styled.div`
   margin: auto;
   height: 10vh;
   color: #fff;
-  border: 1px solid white;
   align-items: center;
   font-size: 2rem;
 

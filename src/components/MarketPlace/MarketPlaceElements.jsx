@@ -3,22 +3,17 @@ import styled from "styled-components";
 export const MainContainer = styled.div`
   width: 80%;
   margin: auto;
-  border: 1px solid #fff;
   height: 80vh;
 `;
 
 export const Menu = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 10vh;
-  border: 1px solid #fff;
 
   .nav-link {
     text-decoration: none;
-  }
-
-  .nav-link:last-child {
-    margin-left: 1rem;
   }
 
   .nav-link:link,
@@ -32,6 +27,10 @@ export const Menu = styled.div`
 `;
 
 export const LinkComponent = styled.div`
-  border: 1px solid #fff;
+  border-radius: 5px;
   background-color: #1e2258;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
