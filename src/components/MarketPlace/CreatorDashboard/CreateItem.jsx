@@ -9,6 +9,8 @@ import { nftaddress, nftmarketaddress } from "../config";
 import NFT from "./artifacts/contracts/NFT.sol/NFT.json";
 import Market from "./artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
+import { Container, Input, TextArea, Button } from "./CreateItemElements";
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 export default function CreateItem() {
@@ -81,30 +83,31 @@ export default function CreateItem() {
   }
 
   return (
-    <div>
-      <div>
-        <input
-          placeholder="Asset Name"
+    <>
+      <Container>
+        <Input
           onChange={(e) =>
             updateFormInput({ ...formInput, name: e.target.value })
           }
+          placeholder="Asset Name"
         />
-        <textarea
-          placeholder="Asset Description"
+        <TextArea
           onChange={(e) =>
             updateFormInput({ ...formInput, description: e.target.value })
           }
+          placeholder="Asset Description"
+          rows="5"
         />
-        <input
-          placeholder="Asset Price in Eth"
+        <Input
           onChange={(e) =>
             updateFormInput({ ...formInput, price: e.target.value })
           }
+          placeholder="Asset Price"
         />
-        <input type="file" name="Asset" onChange={onChange} />
+        <Input type="file" name="Asset" onChange={onChange}></Input>
         {fileUrl && <img width="350" alt="nft" src={fileUrl} />}
-        <button onClick={createMarket}>Create Digital Asset</button>
-      </div>
-    </div>
+        <Button onClick={createMarket}>Create Digital Asset</Button>
+      </Container>
+    </>
   );
 }
