@@ -12,7 +12,7 @@ function Card(props) {
   return (
     <>
       <MainComponent>
-        <Image>{props.image}</Image>
+        <Image src={props.image}></Image>
         <Title>{props.name}</Title>
         <Description>{props.description}</Description>
         <Price>{props.price}</Price>

@@ -7,7 +7,7 @@ export const MainComponent = styled.div`
   color: #fff;
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   height: 80%;
   width: 90%;
   margin: auto;
