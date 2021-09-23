@@ -15,6 +15,7 @@ const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
+
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
