@@ -24,7 +24,7 @@ function MarketPlace() {
           </LinkComponent>
           <LinkComponent>
             <NavLink className="nav-link" to="/assets">
-              <h4>Sell digital assets</h4>
+              <h4>Assets</h4>
             </NavLink>
           </LinkComponent>
           <LinkComponent>

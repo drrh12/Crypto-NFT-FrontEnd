@@ -10,6 +10,8 @@ import Market from "../../../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
 import { ethers } from "ethers";
 
+import Card from "../MyAssets/CardComponent/Card";
+
 export default function HomeNFT() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
@@ -73,17 +75,31 @@ export default function HomeNFT() {
 
   return (
     <div>
-      <div>
-        {nfts.map((nft, i) => (
-          <div key={i}>
-            <img src={nft.image} alt="" />
-            <p>{nft.name}</p>
-            <p>{nft.description}</p>
-            <p>{nft.price} matic</p>
-            <button onClick={() => buyNft(nft)}>Buy</button>
-          </div>
-        ))}
-      </div>
+      {nfts.map((nft, i) => (
+        <Card
+          key={i}
+          image={nft.image}
+          name={nft.name}
+          description={nft.description}
+          price={nft.price}
+        />
+      ))}
     </div>
   );
+}
+
+{
+  /* <div>
+  <div>
+    {nfts.map((nft, i) => (
+      <div key={i}>
+        <img src={nft.image} alt="" />
+        <p>{nft.name}</p>
+        <p>{nft.description}</p>
+        <p>{nft.price} matic</p>
+        <button onClick={() => buyNft(nft)}>Buy</button>
+      </div>
+    ))}
+  </div>
+</div>; */
 }
