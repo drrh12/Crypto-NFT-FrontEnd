@@ -82,24 +82,10 @@ export default function HomeNFT() {
           name={nft.name}
           description={nft.description}
           price={nft.price}
-        />
+          function={() => buyNft(nft)}
+          buttonName="BUY"
+        ></Card>
       ))}
     </div>
   );
-}
-
-{
-  /* <div>
-  <div>
-    {nfts.map((nft, i) => (
-      <div key={i}>
-        <img src={nft.image} alt="" />
-        <p>{nft.name}</p>
-        <p>{nft.description}</p>
-        <p>{nft.price} matic</p>
-        <button onClick={() => buyNft(nft)}>Buy</button>
-      </div>
-    ))}
-  </div>
-</div>; */
 }

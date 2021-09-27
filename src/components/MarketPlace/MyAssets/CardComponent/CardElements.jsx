@@ -25,3 +25,5 @@ export const Description = styled.div`
 export const Price = styled.div`
   border: 1px solid #fff;
 `;
+
+export const Button = styled.button``;

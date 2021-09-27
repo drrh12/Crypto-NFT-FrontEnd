@@ -6,6 +6,7 @@ import {
   Title,
   Description,
   Price,
+  Button,
 } from "./CardElements";
 
 function Card(props) {
@@ -16,6 +17,7 @@ function Card(props) {
         <Title>{props.name}</Title>
         <Description>{props.description}</Description>
         <Price>{props.price}</Price>
+        <Button onClick={props.function}>{props.buttonName}</Button>
       </MainComponent>
     </>
   );
