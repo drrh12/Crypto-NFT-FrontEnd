@@ -11,6 +11,7 @@ import Market from "../../../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 import { ethers } from "ethers";
 
 import Card from "../MyAssets/CardComponent/Card";
+import { MainContainer } from "./HomeNFTElements";
 
 export default function HomeNFT() {
   const [nfts, setNfts] = useState([]);
@@ -74,7 +75,7 @@ export default function HomeNFT() {
     return <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>;
 
   return (
-    <div>
+    <MainContainer>
       {nfts.map((nft, i) => (
         <Card
           key={i}
@@ -86,6 +87,6 @@ export default function HomeNFT() {
           buttonName="BUY"
         ></Card>
       ))}
-    </div>
+    </MainContainer>
   );
 }

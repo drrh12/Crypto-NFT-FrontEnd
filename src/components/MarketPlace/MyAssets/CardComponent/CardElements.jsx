@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const MainComponent = styled.div`
-  height: 30vh;
-  width: 20%;
+  height: 50vh;
+  width: 80%;
   border: 1px solid #fff;
   color: #fff;
+  margin: auto;
 `;
 
 export const Image = styled.img`
