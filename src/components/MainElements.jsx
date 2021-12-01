@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const MainComponent = styled.div`
   width: 100%;
-  height: 100vh;
-  background-color: #0a0a45;
+  background-color: white;
 `;
 
 export const Menu = styled.div`
@@ -11,7 +10,6 @@ export const Menu = styled.div`
   width: 80%;
   margin: auto;
   height: 10vh;
-  color: #fff;
   align-items: center;
   font-size: 2rem;
 
@@ -31,6 +29,11 @@ export const Menu = styled.div`
     text-decoration: none;
     display: inline-block;
   }
+
+  h4{
+    color: #000;
+  }
+
 `;
 
 export const HyperLink = styled.a``;

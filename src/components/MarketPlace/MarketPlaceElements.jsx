@@ -11,6 +11,7 @@ export const Menu = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 10vh;
+  color: black;
 
   .nav-link {
     text-decoration: none;

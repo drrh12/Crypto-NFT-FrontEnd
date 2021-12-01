@@ -8,6 +8,7 @@ import {
 import { LinkComponent, Menu, MainContainer } from "./MarketPlaceElements";
 
 import HomeNFT from "../MarketPlace/HomeNFT/HomeNFT";
+import Album from "../MarketPlace/HomeNFT/Album"
 import CreateItem from "../MarketPlace/CreatorDashboard/CreateItem";
 import MyAssets from "./MyAssets/MyAssets";
 import CreatorDashboard from "./CreatorDashboard/CreatorDashboard";
@@ -39,7 +40,7 @@ function MarketPlace() {
           </LinkComponent>
         </Menu>
         <Switch>
-          <Route path="/assets" component={HomeNFT} />
+          <Route path="/assets" component={Album} />
           <Route path="/my-assets" component={MyAssets} />
           <Route path="/creator-item" component={CreateItem} />
           <Route path="/creator-dashboard" component={CreatorDashboard} />
