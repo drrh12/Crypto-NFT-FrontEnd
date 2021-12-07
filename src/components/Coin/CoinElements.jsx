@@ -7,7 +7,7 @@ export const CoinContainer = styled.div`
   height: 6vh;
   margin: auto;
   border-bottom: 1px solid white;
-  color: #fff;
+  color: #000;
 `;
 
 export const CoinRow = styled.div`

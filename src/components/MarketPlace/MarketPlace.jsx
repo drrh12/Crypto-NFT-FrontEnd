@@ -40,7 +40,7 @@ function MarketPlace() {
           </LinkComponent>
         </Menu>
         <Switch>
-          <Route path="/assets" component={Album} />
+          <Route path="/assets" component={HomeNFT} />
           <Route path="/my-assets" component={MyAssets} />
           <Route path="/creator-item" component={CreateItem} />
           <Route path="/creator-dashboard" component={CreatorDashboard} />
